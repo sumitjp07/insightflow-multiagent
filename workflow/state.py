@@ -46,3 +46,4 @@ class AgentState(TypedDict, total=False):
     status: str                                 # running | completed | failed | max_retries_exceeded
     execution_time_seconds: float               # Total duration
     error_message: Optional[str]
+

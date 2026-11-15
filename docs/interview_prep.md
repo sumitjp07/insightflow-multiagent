@@ -41,3 +41,4 @@ Use these technical answers when interviewing for AI Agent Engineer / Applied AI
 > "We use a hybrid memory model:
 > - **Short-term Working Memory:** Managed via LangGraph's `AgentState` TypedDict, which passes through nodes in memory.
 > - **Long-term Persistent Memory:** Managed via an embedded SQLite database (`memory/insightflow.db`), logging session metadata, execution traces, evaluation scorecards, and final markdown reports for auditability."
+

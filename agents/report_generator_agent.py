@@ -136,3 +136,4 @@ def run_report_generator_agent(state: AgentState, df: pd.DataFrame) -> Dict[str,
 
     logger.info("✅ Final Report synthesized successfully.")
     return state_updates
+

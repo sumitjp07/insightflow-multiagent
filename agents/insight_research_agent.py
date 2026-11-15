@@ -163,3 +163,4 @@ def run_insight_research_agent(state: AgentState, df: pd.DataFrame) -> Dict[str,
 
     logger.info(f"✅ Insight Research completed: Generated {len(insights)} verified evidence points.")
     return state_updates
+

@@ -39,3 +39,4 @@ CREATE TABLE IF NOT EXISTS reports (
     report_markdown TEXT,
     FOREIGN KEY(session_id) REFERENCES sessions(session_id)
 );
+

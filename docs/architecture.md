@@ -54,3 +54,4 @@
   - `execution_logs`: Agent trace activity
   - `evaluation_metrics`: Measured calculation accuracy, coverage, and retry counts
   - `reports`: Full text of synthesized intelligence briefs
+

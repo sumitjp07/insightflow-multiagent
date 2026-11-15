@@ -47,3 +47,4 @@ def test_pipeline_anomaly_query(sales_data):
     assert result["status"] == "completed"
     assert len(result["subtasks"]) >= 3
     assert "evaluation_result" in result
+

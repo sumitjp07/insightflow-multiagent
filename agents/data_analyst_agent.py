@@ -122,3 +122,4 @@ def run_data_analyst_agent(state: AgentState, df: pd.DataFrame = None) -> Tuple[
     
     logger.info(f"✅ Data Analyst completed. Cleaned dataset has {len(df)} rows.")
     return state_updates, df
+
