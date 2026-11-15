@@ -19,3 +19,4 @@ If you discover a security issue or potential exploit within InsightFlow:
 1. Please do NOT open a public GitHub issue.
 2. Email the maintainers directly with reproduction details and logs.
 3. We will respond within 48 hours to acknowledge and issue a patch.
+

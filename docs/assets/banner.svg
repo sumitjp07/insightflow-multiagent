@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="100%" height="340" style="background:#09090b; border-radius:12px; font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#27272a" stroke-width="0.5" stroke-opacity="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Grid & Glow -->
+  <rect width="1200" height="340" fill="#09090b" rx="12"/>
+  <rect width="1200" height="340" fill="url(#grid)" rx="12"/>
+  <ellipse cx="600" cy="50" rx="450" ry="120" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="340" fill="none" stroke="#27272a" stroke-width="1.5" rx="12"/>
+
+  <!-- Top Status Pill -->
+  <g transform="translate(460, 36)">
+    <rect width="280" height="28" rx="14" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <circle cx="16" cy="14" r="4" fill="#10b981"/>
+    <text x="30" y="18" fill="#a1a1aa" font-size="11" font-weight="500" letter-spacing="0.5">AUTONOMOUS MULTI-AGENT RUNTIME</text>
+  </g>
+
+  <!-- Main Title -->
+  <g transform="translate(600, 130)" text-anchor="middle">
+    <text fill="url(#textGrad)" font-size="46" font-weight="800" letter-spacing="-1.5">⚡ InsightFlow</text>
+  </g>
+
+  <!-- Subtitle -->
+  <g transform="translate(600, 172)" text-anchor="middle">
+    <text fill="#94a3b8" font-size="16" font-weight="400" letter-spacing="-0.2">
+      Self-Planning, Tool-Executing, and Hallucination-Auditing Intelligence for Tabular Data
+    </text>
+  </g>
+
+  <!-- 4 Architecture Metric Cards -->
+  <g transform="translate(80, 220)">
+    <!-- Card 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="240" height="74" rx="8" fill="#121215" stroke="#27272a" stroke-width="1"/>
+      <text x="16" y="26" fill="#71717a" font-size="10" font-weight="600" letter-spacing="1">CALCULATION ACCURACY</text>
+      <text x="16" y="54" fill="#34d399" font-size="22" font-weight="700" font-family="'JetBrains Mono', monospace">100.0%</text>
+      <text x="100" y="52" fill="#71717a" font-size="11">Pandas Audited</text>
+    </g>
+
+    <!-- Card 2 -->
+    <g transform="translate(265, 0)">
+      <rect width="240" height="74" rx="8" fill="#121215" stroke="#27272a" stroke-width="1"/>
+      <text x="16" y="26" fill="#71717a" font-size="10" font-weight="600" letter-spacing="1">EVIDENCE COVERAGE</text>
+      <text x="16" y="54" fill="#60a5fa" font-size="22" font-weight="700" font-family="'JetBrains Mono', monospace">93.3%</text>
+      <text x="95" y="52" fill="#71717a" font-size="11">Empirically Verified</text>
+    </g>
+
+    <!-- Card 3 -->
+    <g transform="translate(530, 0)">
+      <rect width="240" height="74" rx="8" fill="#121215" stroke="#27272a" stroke-width="1"/>
+      <text x="16" y="26" fill="#71717a" font-size="10" font-weight="600" letter-spacing="1">PIPELINE LATENCY</text>
+      <text x="16" y="54" fill="#facc15" font-size="22" font-weight="700" font-family="'JetBrains Mono', monospace">2.06s</text>
+      <text x="85" y="52" fill="#71717a" font-size="11">End-to-End Speed</text>
+    </g>
+
+    <!-- Card 4 -->
+    <g transform="translate(795, 0)">
+      <rect width="245" height="74" rx="8" fill="#121215" stroke="#27272a" stroke-width="1"/>
+      <text x="16" y="26" fill="#71717a" font-size="10" font-weight="600" letter-spacing="1">AGENT GUARDRAIL</text>
+      <text x="16" y="54" fill="#a78bfa" font-size="20" font-weight="700" font-family="'JetBrains Mono', monospace">APPROVED</text>
+      <text x="135" y="52" fill="#71717a" font-size="11">Zero Hallucination</text>
+    </g>
+  </g>
+</svg>

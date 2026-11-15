@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="680" style="background:#09090b; border-radius:12px; font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Container Box -->
+  <rect width="1200" height="680" rx="12" fill="#09090b" stroke="#27272a" stroke-width="1.5"/>
+
+  <!-- Window Chrome / Title Bar -->
+  <rect width="1200" height="48" rx="12" fill="#121215"/>
+  <rect y="36" width="1200" height="12" fill="#121215"/>
+  <line x1="0" y1="48" x2="1200" y2="48" stroke="#27272a" stroke-width="1"/>
+
+  <!-- Window Dots -->
+  <circle cx="24" cy="24" r="6" fill="#ef4444"/>
+  <circle cx="44" cy="24" r="6" fill="#f59e0b"/>
+  <circle cx="64" cy="24" r="6" fill="#10b981"/>
+
+  <!-- Window Brand & Breadcrumbs -->
+  <g transform="translate(100, 16)">
+    <rect width="20" height="20" rx="4" fill="#2563eb"/>
+    <text x="6" y="14" fill="#ffffff" font-size="12" font-weight="bold">⚡</text>
+    <text x="30" y="15" fill="#ffffff" font-size="13" font-weight="600">InsightFlow Platform</text>
+    <text x="175" y="15" fill="#71717a" font-size="12">/ workspaces /</text>
+    <text x="265" y="15" fill="#e4e4e7" font-size="12" font-family="'JetBrains Mono', monospace">sales_data.csv</text>
+  </g>
+
+  <!-- Status Badges in Header -->
+  <g transform="translate(940, 14)">
+    <rect width="130" height="22" rx="4" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <circle cx="12" cy="11" r="3.5" fill="#10b981"/>
+    <text x="22" y="15" fill="#a1a1aa" font-size="10" font-weight="500">LangGraph Active</text>
+
+    <rect x="140" width="100" height="22" rx="4" fill="#2563eb"/>
+    <text x="156" y="15" fill="#ffffff" font-size="10" font-weight="600">Export PDF</text>
+  </g>
+
+  <!-- Workspace Division -->
+  <!-- Left Panel: 400px -->
+  <rect x="0" y="48" width="400" height="632" fill="#121215"/>
+  <line x1="400" y1="48" x2="400" y2="680" stroke="#27272a" stroke-width="1"/>
+
+  <!-- Left Panel Header -->
+  <g transform="translate(24, 72)">
+    <text fill="#71717a" font-size="10" font-weight="600" letter-spacing="1">DATASET SOURCE</text>
+    <rect y="12" width="352" height="36" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="14" y="34" fill="#e4e4e7" font-size="12" font-family="'JetBrains Mono', monospace">sales_data.csv (Retail, 30 rows)</text>
+  </g>
+
+  <!-- Dataset Quick KPIs -->
+  <g transform="translate(24, 140)">
+    <rect width="82" height="42" rx="4" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="10" y="16" fill="#71717a" font-size="9">ROWS</text>
+    <text x="10" y="34" fill="#e4e4e7" font-size="13" font-weight="bold" font-family="'JetBrains Mono', monospace">30</text>
+
+    <rect x="90" width="82" height="42" rx="4" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="100" y="16" fill="#71717a" font-size="9">COLS</text>
+    <text x="100" y="34" fill="#e4e4e7" font-size="13" font-weight="bold" font-family="'JetBrains Mono', monospace">10</text>
+
+    <rect x="180" width="82" height="42" rx="4" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="190" y="16" fill="#71717a" font-size="9">NULLS</text>
+    <text x="190" y="34" fill="#34d399" font-size="13" font-weight="bold" font-family="'JetBrains Mono', monospace">0</text>
+
+    <rect x="270" width="82" height="42" rx="4" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="280" y="16" fill="#71717a" font-size="9">MEMORY</text>
+    <text x="280" y="34" fill="#e4e4e7" font-size="13" font-weight="bold" font-family="'JetBrains Mono', monospace">2.3 KB</text>
+  </g>
+
+  <!-- Natural Language Query Box -->
+  <g transform="translate(24, 204)">
+    <text fill="#71717a" font-size="10" font-weight="600" letter-spacing="1">RESEARCH OBJECTIVE</text>
+    <rect y="12" width="352" height="68" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <text x="12" y="32" fill="#e4e4e7" font-size="11">Which product brings maximum revenue and</text>
+    <text x="12" y="48" fill="#e4e4e7" font-size="11">what is the leading region?</text>
+
+    <rect y="90" width="352" height="34" rx="6" fill="#2563eb"/>
+    <text x="110" y="112" fill="#ffffff" font-size="12" font-weight="600">▶ Execute Analysis Pipeline</text>
+  </g>
+
+  <!-- Execution Pipeline Trace Header -->
+  <g transform="translate(24, 355)">
+    <text fill="#71717a" font-size="10" font-weight="600" letter-spacing="1">EXECUTION PIPELINE TRACE</text>
+    <rect x="270" y="-10" width="82" height="20" rx="4" fill="#064e3b" stroke="#059669" stroke-width="0.8"/>
+    <text x="282" y="4" fill="#34d399" font-size="10" font-family="'JetBrains Mono', monospace">Completed</text>
+  </g>
+
+  <!-- Pipeline Steps (GitHub Actions Style) -->
+  <g transform="translate(24, 385)">
+    <!-- Step 1 -->
+    <rect width="352" height="44" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <circle cx="20" cy="22" r="5" fill="#34d399"/>
+    <text x="36" y="19" fill="#e4e4e7" font-size="11" font-weight="600">Planner Agent</text>
+    <text x="36" y="34" fill="#71717a" font-size="9" font-family="'JetBrains Mono', monospace">Decomposed 4 tasks in 0.42s</text>
+
+    <!-- Step 2 -->
+    <rect y="50" width="352" height="44" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <circle cx="20" cy="72" r="5" fill="#34d399"/>
+    <text x="36" y="69" fill="#e4e4e7" font-size="11" font-weight="600">Data Analyst Agent</text>
+    <text x="36" y="84" fill="#71717a" font-size="9" font-family="'JetBrains Mono', monospace">Zero nulls • Column stats computed</text>
+
+    <!-- Step 3 -->
+    <rect y="100" width="352" height="44" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <circle cx="20" cy="122" r="5" fill="#34d399"/>
+    <text x="36" y="119" fill="#e4e4e7" font-size="11" font-weight="600">Insight Research Agent</text>
+    <text x="36" y="134" fill="#71717a" font-size="9" font-family="'JetBrains Mono', monospace">Top driver: Laptops ($54,200)</text>
+
+    <!-- Step 4 -->
+    <rect y="150" width="352" height="44" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <circle cx="20" cy="172" r="5" fill="#34d399"/>
+    <text x="36" y="169" fill="#e4e4e7" font-size="11" font-weight="600">Evaluation Guardrail</text>
+    <text x="36" y="184" fill="#71717a" font-size="9" font-family="'JetBrains Mono', monospace">Audited vs ground truth (100% OK)</text>
+
+    <!-- Step 5 -->
+    <rect y="200" width="352" height="44" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+    <circle cx="20" cy="222" r="5" fill="#34d399"/>
+    <text x="36" y="219" fill="#e4e4e7" font-size="11" font-weight="600">Report Generator Agent</text>
+    <text x="36" y="234" fill="#71717a" font-size="9" font-family="'JetBrains Mono', monospace">Executive brief & PDF synthesized</text>
+  </g>
+
+  <!-- Right Canvas: 800px -->
+  <!-- Top Tab Bar -->
+  <rect x="400" y="48" width="800" height="44" fill="#121215"/>
+  <line x1="400" y1="92" x2="1200" y2="92" stroke="#27272a" stroke-width="1"/>
+
+  <g transform="translate(424, 62)">
+    <text fill="#ffffff" font-size="12" font-weight="600">Executive Brief</text>
+    <line x1="-4" y1="29" x2="88" y2="29" stroke="#3b82f6" stroke-width="2"/>
+    <text x="120" fill="#71717a" font-size="12" font-weight="500">Data Grid</text>
+    <text x="210" fill="#71717a" font-size="12" font-weight="500">Charts & Trends</text>
+    <text x="330" fill="#71717a" font-size="12" font-weight="500">Audit Archive</text>
+  </g>
+
+  <!-- Right Canvas Body -->
+  <!-- 4 Audit KPI Cards -->
+  <g transform="translate(424, 112)">
+    <rect width="176" height="72" rx="6" fill="#121215" stroke="#27272a" stroke-width="1"/>
+    <text x="14" y="22" fill="#71717a" font-size="9" font-weight="600">CALCULATION ACCURACY</text>
+    <text x="14" y="48" fill="#34d399" font-size="18" font-weight="bold" font-family="'JetBrains Mono', monospace">100.0%</text>
+    <text x="14" y="63" fill="#71717a" font-size="9">Audited vs Ground Truth</text>
+
+    <rect x="190" width="176" height="72" rx="6" fill="#121215" stroke="#27272a" stroke-width="1"/>
+    <text x="204" y="22" fill="#71717a" font-size="9" font-weight="600">EVIDENCE COVERAGE</text>
+    <text x="204" y="48" fill="#60a5fa" font-size="18" font-weight="bold" font-family="'JetBrains Mono', monospace">100.0%</text>
+    <text x="204" y="63" fill="#71717a" font-size="9">Empirical Claims Verified</text>
+
+    <rect x="380" width="176" height="72" rx="6" fill="#121215" stroke="#27272a" stroke-width="1"/>
+    <text x="394" y="22" fill="#71717a" font-size="9" font-weight="600">SELF-CORRECTION RETRIES</text>
+    <text x="394" y="48" fill="#e4e4e7" font-size="18" font-weight="bold" font-family="'JetBrains Mono', monospace">0</text>
+    <text x="394" y="63" fill="#71717a" font-size="9">Max Threshold: 3</text>
+
+    <rect x="570" width="176" height="72" rx="6" fill="#121215" stroke="#27272a" stroke-width="1"/>
+    <text x="584" y="22" fill="#71717a" font-size="9" font-weight="600">GUARDRAIL STATUS</text>
+    <text x="584" y="48" fill="#34d399" font-size="18" font-weight="bold" font-family="'JetBrains Mono', monospace">APPROVED</text>
+    <text x="584" y="63" fill="#71717a" font-size="9">Zero Hallucination</text>
+  </g>
+
+  <!-- Executive Report Mockup Container -->
+  <g transform="translate(424, 204)">
+    <rect width="746" height="448" rx="8" fill="#121215" stroke="#27272a" stroke-width="1"/>
+
+    <!-- Document Header -->
+    <text x="28" y="42" fill="#ffffff" font-size="18" font-weight="700">Executive Data Intelligence Brief</text>
+    <text x="28" y="62" fill="#71717a" font-size="11" font-family="'JetBrains Mono', monospace">Target: sales_data.csv • Evaluator Audited • Confidence Score: 100%</text>
+    <line x1="28" y1="78" x2="718" y2="78" stroke="#27272a" stroke-width="1"/>
+
+    <!-- Report Body Highlights -->
+    <text x="28" y="104" fill="#60a5fa" font-size="12" font-weight="600">1. PRIMARY REVENUE DRIVERS</text>
+    <text x="28" y="124" fill="#d4d4d8" font-size="11">The Laptops category accounts for $54,200.00 in gross revenue, representing the leading contributor.</text>
+    <text x="28" y="142" fill="#d4d4d8" font-size="11">North region generated 38.4% of total organizational sales volume.</text>
+
+    <text x="28" y="180" fill="#60a5fa" font-size="12" font-weight="600">2. STATISTICAL OUTLIER DETECTION (1.5x IQR)</text>
+    <text x="28" y="200" fill="#d4d4d8" font-size="11">Zero fatal data anomalies detected in price distributions; distribution variance remains within 2σ bounds.</text>
+
+    <!-- Mini Visual Chart representation -->
+    <g transform="translate(28, 230)">
+      <rect width="690" height="190" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1"/>
+      <text x="16" y="24" fill="#a1a1aa" font-size="11" font-weight="600">Regional Revenue Breakdown (Audited Sum)</text>
+      
+      <!-- Bar 1 -->
+      <rect x="20" y="46" width="420" height="22" rx="4" fill="#3b82f6"/>
+      <text x="450" y="62" fill="#e4e4e7" font-size="11" font-family="'JetBrains Mono', monospace">North — $54,200.00 (Leading)</text>
+
+      <!-- Bar 2 -->
+      <rect x="20" y="78" width="310" height="22" rx="4" fill="#60a5fa"/>
+      <text x="340" y="94" fill="#e4e4e7" font-size="11" font-family="'JetBrains Mono', monospace">West — $41,850.00</text>
+
+      <!-- Bar 3 -->
+      <rect x="20" y="110" width="230" height="22" rx="4" fill="#93c5fd"/>
+      <text x="260" y="126" fill="#e4e4e7" font-size="11" font-family="'JetBrains Mono', monospace">East — $31,100.00</text>
+
+      <!-- Bar 4 -->
+      <rect x="20" y="142" width="160" height="22" rx="4" fill="#bfdbfe"/>
+      <text x="190" y="158" fill="#e4e4e7" font-size="11" font-family="'JetBrains Mono', monospace">South — $22,400.00</text>
+    </g>
+  </g>
+</svg>

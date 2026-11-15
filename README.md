@@ -1,18 +1,19 @@
 <div align="center">
 
-# ⚡ InsightFlow
-### Autonomous Multi-Agent AI Data Research & Analysis Platform
+<img src="docs/assets/banner.svg" alt="InsightFlow Multi-Agent Intelligence Banner" width="100%" />
+
+<br/>
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![LangGraph](https://img.shields.io/badge/LangGraph-0.2.53-orange.svg?logo=langchain&logoColor=white)](https://github.com/langchain-ai/langgraph)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Pytest](https://img.shields.io/badge/Pytest-10%2F10%20Passing-brightgreen.svg?logo=pytest&logoColor=white)](https://pytest.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 **A production-grade, multi-agent AI system that decomposes complex data research objectives, executes deterministic statistical tools, mathematically audits claims against dataset ground truth to guarantee zero hallucination, and compiles publication-quality executive briefs.**
 
-[Architecture](#-system-architecture) • [Live Benchmarks](#-measured-benchmark-results) • [Quick Start](#-quick-start) • [Agent Roster](#-the-5-specialized-agents) • [API Reference](#-rest-api-reference)
+[Architecture](#-system-architecture) • [Live Benchmarks](#-measured-benchmark-results) • [Quick Start](#-quick-start) • [Agent Roster](#-the-5-specialized-agents) • [Web Workspace](#-interactive-web-workspace) • [API Reference](#-rest-api-reference)
 
 ---
 
@@ -119,6 +120,77 @@ InsightFlow orchestrates 5 autonomous agents, each with dedicated responsibiliti
 
 ---
 
+## 🖥️ Interactive Web Workspace
+
+Built for enterprise analysts and engineering teams, the interface follows a modern Linear/Databricks dark-mode architecture:
+
+<img src="docs/assets/dashboard_mockup.svg" alt="InsightFlow Enterprise Dashboard Mockup" width="100%" />
+
+- **Dual-Pane Layout:** Left 40% Control Panel for dataset switching, live query execution, and real-time **GitHub Actions-style Multi-Agent Pipeline Trace**.
+- **Audited Metric Scorecards:** Real-time visibility into Calculation Accuracy, Evidence Coverage, Retries, and Guardrail Status.
+- **Interactive Data Grid:** High-density in-memory Pandas dataframe inspector with instantaneous text search and column filtering.
+- **Visual Analytics:** Chart.js visualizations for revenue distributions and product mix proportions.
+- **SQLite Audit Archive:** Full session history log with reproducible execution traces.
+- **1-Click Executive PDF Export:** Instant download of print-ready analytical reports.
+
+---
+
+## 🔍 Sample Multi-Agent State Trace
+
+<details>
+<summary><b>Click to inspect real-world in-flight LangGraph State payload</b></summary>
+
+```json
+{
+  "session_id": "api_1763183592",
+  "status": "completed",
+  "execution_time_seconds": 2.18,
+  "evaluation_result": {
+    "calculation_accuracy_pct": 100.0,
+    "evidence_coverage_pct": 100.0,
+    "guardrail_status": "approved",
+    "total_claims_checked": 4,
+    "hallucinated_claims": 0
+  },
+  "subtasks": [
+    {
+      "task_id": "task_1",
+      "agent": "planner",
+      "action": "decompose_query",
+      "status": "success"
+    },
+    {
+      "task_id": "task_2",
+      "agent": "data_analyst",
+      "action": "get_data_summary",
+      "status": "success"
+    },
+    {
+      "task_id": "task_3",
+      "agent": "insight_research",
+      "action": "group_analysis",
+      "params": { "group_by": "Product", "agg_column": "Revenue" },
+      "status": "success"
+    },
+    {
+      "task_id": "task_4",
+      "agent": "evaluation",
+      "action": "validate_evidence",
+      "status": "approved"
+    },
+    {
+      "task_id": "task_5",
+      "agent": "report_generator",
+      "action": "build_report",
+      "status": "completed"
+    }
+  ]
+}
+```
+</details>
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -127,8 +199,8 @@ InsightFlow orchestrates 5 autonomous agents, each with dedicated responsibiliti
 
 ### 1. Clone & Set Up Environment
 ```bash
-git clone https://github.com/<your-username>/insightflow.git
-cd insightflow
+git clone https://github.com/sumitjp07/insightflow-multiagent.git
+cd insightflow-multiagent
 
 # Create and activate virtual environment
 python -m venv venv
@@ -171,19 +243,6 @@ Navigate to **`http://localhost:8000`** in your browser.
 
 ---
 
-## 🖥️ Interactive Web Console
-
-Built for enterprise analysts and engineering teams, the interface follows a modern Linear/Databricks dark-mode architecture:
-
-- **Dual-Pane Layout:** Left 40% Control Panel for dataset switching, live query execution, and real-time **GitHub Actions-style Multi-Agent Pipeline Trace**.
-- **Audited Metric Scorecards:** Real-time visibility into Calculation Accuracy, Evidence Coverage, Retries, and Guardrail Status.
-- **Interactive Data Grid:** High-density in-memory Pandas dataframe inspector with instantaneous instant text search and column filtering.
-- **Visual Analytics:** Chart.js visualizations for revenue distributions and product mix proportions.
-- **SQLite Audit Archive:** Full session history log with reproducible execution traces.
-- **1-Click Executive PDF Export:** Instant download of print-ready analytical reports.
-
----
-
 ## 📡 REST API Reference
 
 InsightFlow exposes a high-performance REST API powered by FastAPI:
@@ -215,6 +274,9 @@ insightflow/
 │   ├── evaluation_agent.py          # Ground-truth mathematical auditor
 │   └── report_generator_agent.py    # Executive synthesis & formatting
 ├── docs/
+│   ├── assets/
+│   │   ├── banner.svg               # High-DPI Vector README Banner
+│   │   └── dashboard_mockup.svg     # Pixel-perfect UI Showcase Graphic
 │   ├── architecture.md              # Technical design & state machine schema
 │   ├── evaluation_results.md        # Benchmark measurements & target metrics
 │   ├── interview_prep.md            # 8 core technical interview Q&As
@@ -252,6 +314,16 @@ insightflow/
 ├── SECURITY.md                      # Security guarantees & safe execution policy
 └── LICENSE                          # MIT License
 ```
+
+---
+
+## 👨‍💻 Author
+
+**Sumit**  
+B.Tech Computer Science & Engineering (Batch of 2029)  
+*Pimpri Chinchwad University (PCU), Pune*  
+
+[![GitHub](https://img.shields.io/badge/GitHub-sumitjp07-181717?style=flat&logo=github)](https://github.com/sumitjp07)
 
 ---
 
