@@ -1,0 +1,69 @@
+# ============================================================
+# InsightFlow - .gitignore
+# ============================================================
+
+# Environment variables (NEVER commit these!)
+.env
+*.env
+
+# Python virtual environment
+venv/
+env/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Pytest cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Generated reports (too large for git)
+reports/*.pdf
+reports/*.html
+
+# SQLite database (session data, generated at runtime)
+memory/*.db
+memory/*.sqlite
+
+# Uploaded datasets (user data, not for git)
+uploads/
+*.csv
+*.xlsx
+*.xls
+!sample_data/*.csv
+!sample_data/*.xlsx
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Windows system files
+Thumbs.db
+desktop.ini
+
+# macOS system files
+.DS_Store
+
+# Jupyter notebooks (if any)
+.ipynb_checkpoints/
+*.ipynb
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+

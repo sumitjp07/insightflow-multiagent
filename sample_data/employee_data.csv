@@ -1,0 +1,22 @@
+Employee_ID,Name,Department,Role,Salary,Experience_Years,Performance_Score,Projects_Completed,Joining_Date,City,Remote_Work
+E001,Aryan Mehta,Engineering,Software Engineer,75000,3,4.2,12,2021-06-15,Mumbai,Yes
+E002,Pooja Iyer,Marketing,Marketing Manager,65000,5,4.5,8,2019-03-20,Chennai,No
+E003,Rahul Singh,Engineering,Senior Engineer,95000,7,4.7,22,2017-08-10,Bangalore,Yes
+E004,Nisha Patel,HR,HR Specialist,52000,2,3.9,6,2022-01-05,Pune,No
+E005,Vikram Joshi,Engineering,Team Lead,110000,9,4.8,35,2015-11-30,Hyderabad,Yes
+E006,Priya Desai,Data Science,Data Analyst,82000,4,4.3,15,2020-07-22,Mumbai,Yes
+E007,Arun Kumar,Sales,Sales Executive,48000,1,3.5,4,2023-02-14,Delhi,No
+E008,Meera Sharma,Engineering,Software Engineer,72000,3,4.1,10,2021-09-01,Bangalore,Yes
+E009,Kabir Verma,Marketing,Content Writer,42000,2,4.0,9,2022-04-18,Mumbai,No
+E010,Sunita Nair,Data Science,ML Engineer,98000,6,4.6,20,2018-12-03,Pune,Yes
+E011,Deepak Rao,Engineering,DevOps Engineer,88000,5,4.4,18,2019-10-15,Chennai,Yes
+E012,Anjali Gupta,HR,HR Manager,70000,8,4.5,12,2016-05-28,Delhi,No
+E013,Rohit Bhatt,Sales,Senior Sales,62000,4,4.2,14,2020-08-09,Hyderabad,No
+E014,Kavita Shah,Data Science,Data Scientist,105000,7,4.8,25,2017-03-17,Bangalore,Yes
+E015,Sanjay Pillai,Engineering,Software Engineer,78000,4,4.3,13,2020-11-23,Mumbai,Yes
+E016,Divya Krishnan,Marketing,Digital Marketer,55000,3,4.1,10,2021-07-06,Chennai,No
+E017,Nitin Chopra,Engineering,Senior Engineer,92000,6,4.6,21,2018-02-14,Pune,Yes
+E018,Riya Malhotra,HR,Recruiter,46000,2,3.8,5,2022-09-30,Delhi,No
+E019,Amruth Reddy,Sales,Sales Manager,80000,6,4.4,20,2018-06-25,Hyderabad,No
+E020,Tanvi Bose,Data Science,Data Analyst,79000,4,4.2,16,2020-04-11,Mumbai,Yes
+

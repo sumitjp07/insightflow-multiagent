@@ -1,0 +1,45 @@
+# ============================================================
+# InsightFlow - Requirements
+# Python 3.11+
+# Last updated: November 2026
+# ============================================================
+
+# ── LLM & Agent Framework ──────────────────────────────────
+langchain==0.3.7
+langchain-core==0.3.21
+langchain-google-genai==2.0.5
+langgraph==0.2.53
+langgraph-checkpoint==2.0.6
+
+# ── Google Generative AI ───────────────────────────────────
+google-generativeai==0.8.3
+
+# ── Data Processing ────────────────────────────────────────
+pandas==2.2.3
+numpy==1.26.4
+openpyxl==3.1.5
+
+# ── Visualization ──────────────────────────────────────────
+plotly==5.24.1
+
+# ── Web UI ─────────────────────────────────────────────────
+streamlit==1.40.1
+
+# ── PDF Report Generation ──────────────────────────────────
+reportlab==4.2.5
+Pillow==11.0.0
+
+# ── Environment & Config ───────────────────────────────────
+python-dotenv==1.0.1
+
+# ── Database ───────────────────────────────────────────────
+# SQLite is built into Python — no extra install needed!
+
+# ── Testing ────────────────────────────────────────────────
+pytest==8.3.3
+pytest-asyncio==0.24.0
+
+# ── Utilities ──────────────────────────────────────────────
+pydantic==2.10.1
+typing-extensions==4.12.2
+
