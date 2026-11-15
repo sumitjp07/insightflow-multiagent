@@ -319,13 +319,13 @@ insightflow/
 
 ## 👨‍💻 Author
 
-**Sumit Patil**  
-B.Tech Computer Science & Engineering (Batch of 2029)  
+**Sumit Jitendra Patil**  
+B.Tech Computer Science & Engineering (Batch of 2026 – 2029)  
 *Pimpri Chinchwad University (PCU), Pune*  
 
 [![GitHub](https://img.shields.io/badge/GitHub-sumitjp07-181717?style=flat&logo=github)](https://github.com/sumitjp07)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-sumitjpatil-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/sumitjpatil)
-[![Email](https://img.shields.io/badge/Email-sumitjpatil2007%40gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:sumitjpatil2007@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-sumitp2007-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/sumitp2007/)
+[![Email](https://img.shields.io/badge/Email-sumitj.patil2007%40gmail.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:sumitj.patil2007@gmail.com)
 
 ---
 
