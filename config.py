@@ -39,7 +39,7 @@ if not GEMINI_API_KEY:
     print("   Please copy .env.example to .env and add your API key.")
 
 # ── LLM Settings ───────────────────────────────────────────
-LLM_MODEL_NAME   = os.getenv("LLM_MODEL_NAME", "gemini-2.5-flash")
+LLM_MODEL_NAME   = os.getenv("LLM_MODEL_NAME", "gemini-3.8-flash")
 LLM_TEMPERATURE  = 0.1                   # Low = more deterministic (good for analysis)
 LLM_MAX_TOKENS   = 8192
 FALLBACK_TO_OFFLINE = True               # Agar API timeout ya network fail ho to deterministic fallback use karein

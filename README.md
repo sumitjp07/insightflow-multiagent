@@ -1,9 +1,10 @@
 # ⚡ InsightFlow — Autonomous Multi-Agent AI Data Research & Analysis System
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)](https://fastapi.tiangolo.com)
 [![LangGraph](https://img.shields.io/badge/LangGraph-0.2.53-orange.svg)](https://github.com/langchain-ai/langgraph)
 [![LangChain](https://img.shields.io/badge/LangChain-0.3.7-green.svg)](https://github.com/langchain-ai/langchain)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.40.1-red.svg)](https://streamlit.io/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v3-38B2AC.svg)](https://tailwindcss.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests: 10/10 Passing](https://img.shields.io/badge/Pytest-10%2F10%20Passing-brightgreen.svg)](https://pytest.org)
 
@@ -19,7 +20,7 @@
 - **Hallucination Protection:** Evaluation Agent verifies all statistical claims against actual dataset ground truth.
 - **Persistent SQLite Memory:** Tracks session metadata, agent execution trace logs, and evaluation metrics.
 - **Publication-Grade PDF Reports:** Built with ReportLab including styled metrics tables, callout blocks, and findings.
-- **Interactive SaaS Dashboard:** Modern Streamlit UI with file upload, preview, and interactive Plotly visualizations.
+- **Enterprise Web Interface:** Sleek Linear/Databricks-inspired dark mode web app with live agent trace, data grid filtering, Chart.js trends, and 1-click execution.
 
 ---
 
@@ -128,11 +129,21 @@ GEMINI_API_KEY=your_actual_gemini_api_key_here
 pytest -v
 ```
 
-### 4. Launch Streamlit Application
-```bash
-streamlit run app.py
+### 4. Launch Application
+
+**1-Click Launch (Windows):**
+Simply double-click `run.bat` or run:
+```powershell
+.\run.ps1
 ```
-Open your browser at `http://localhost:8501`.
+
+**Manual Launch:**
+```bash
+python -m uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+```
+Open your browser at **`http://localhost:8000`**.
+
+*(Note: Streamlit alternative is also available via `streamlit run app.py` at `http://localhost:8501`)*
 
 ---
 

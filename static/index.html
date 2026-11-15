@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsightFlow Studio | Autonomous Multi-Agent AI System</title>
+    <title>InsightFlow — Multi-Agent Data Intelligence Platform</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,440 +12,324 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            500: '#6366F1',
-                            600: '#4F46E5',
-                            700: '#4338CA',
+                        zinc: {
+                            850: '#1F1F23',
+                            950: '#09090B',
                         }
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts -->
+    <!-- Inter Font & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Marked.js for Markdown -->
+    <!-- Marked.js -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Canvas Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #090D16; }
-        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: #09090B; }
+        ::-webkit-scrollbar-thumb { background: #27272A; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3F3F46; }
 
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .border-subtle { border-color: #27272A; }
+        .bg-surface { background-color: #121215; }
+        .bg-surface-elevated { background-color: #18181B; }
+
+        .tab-btn.active {
+            color: #FFFFFF;
+            border-bottom: 2px solid #3B82F6;
+            background: transparent;
         }
 
-        .active-tab {
-            background: #4F46E5 !important;
-            color: #FFFFFF !important;
-            border-color: #6366F1 !important;
-            box-shadow: 0 4px 14px -2px rgba(79, 70, 229, 0.4);
-        }
-
-        /* Animated Pulsing Status Dot */
-        .pulse-dot {
-            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
-        }
-        @keyframes pulse-ring {
-            to { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-        }
-
-        /* Typography & Tables */
-        .prose h1, .prose h2, .prose h3 { color: #F1F5F9 !important; font-weight: 700; }
-        .prose strong { color: #E2E8F0; }
-        .prose blockquote { border-left-color: #6366F1; background: rgba(99, 102, 241, 0.08); padding: 8px 14px; border-radius: 0 8px 8px 0; }
-        .prose code { background: #1E293B; color: #A5B4FC; padding: 2px 6px; border-radius: 4px; font-size: 0.82rem; }
-        .prose table { border-collapse: collapse; width: 100%; margin: 16px 0; }
-        .prose th { background: #1E293B; color: #E2E8F0; padding: 8px 12px; font-size: 0.75rem; text-transform: uppercase; border: 1px solid #334155; }
-        .prose td { padding: 8px 12px; border: 1px solid #334155; font-size: 0.8rem; }
+        /* Executive Markdown Document Styling */
+        .doc-view h1 { font-size: 1.5rem; font-weight: 700; color: #FAFAFA; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        .doc-view h2 { font-size: 1.15rem; font-weight: 600; color: #F4F4F5; margin-top: 1.5rem; margin-bottom: 0.5rem; border-bottom: 1px solid #27272A; padding-bottom: 0.35rem; }
+        .doc-view h3 { font-size: 0.95rem; font-weight: 600; color: #E4E4E7; margin-top: 1rem; margin-bottom: 0.25rem; }
+        .doc-view p { font-size: 0.85rem; line-height: 1.6; color: #A1A1AA; margin-bottom: 0.75rem; }
+        .doc-view blockquote { border-left: 3px solid #3B82F6; background: rgba(59, 130, 246, 0.05); padding: 8px 14px; border-radius: 0 6px 6px 0; color: #E4E4E7; font-size: 0.82rem; margin: 0.75rem 0; }
+        .doc-view ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.75rem; font-size: 0.85rem; color: #A1A1AA; }
+        .doc-view li { margin-bottom: 0.25rem; }
+        .doc-view table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.8rem; }
+        .doc-view th { background: #18181B; color: #D4D4D8; text-align: left; padding: 8px 12px; border: 1px solid #27272A; font-weight: 600; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; }
+        .doc-view td { padding: 8px 12px; border: 1px solid #27272A; color: #A1A1AA; }
+        .doc-view code { background: #18181B; color: #93C5FD; padding: 2px 5px; border-radius: 4px; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; }
+        .doc-view hr { border: none; border-top: 1px solid #27272A; margin: 1.5rem 0; }
     </style>
 </head>
-<body class="bg-[#050811] text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-indigo-600 selection:text-white">
+<body class="bg-zinc-950 text-zinc-100 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
 
-    <!-- ── TOP NAVIGATION NAVBAR ──────────────────────────────────────── -->
-    <header class="h-16 border-b border-slate-800/80 bg-slate-900/80 backdrop-blur-md sticky top-0 z-40 px-6 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/25">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            </div>
-            <div>
-                <div class="flex items-center gap-2">
-                    <h1 class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-indigo-100 to-purple-300 bg-clip-text text-transparent">InsightFlow Studio</h1>
-                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">v1.0 ENTERPRISE</span>
+    <!-- ── TOP NAVIGATION BAR ────────────────────────────────────── -->
+    <header class="h-13 border-b border-subtle bg-surface px-6 flex items-center justify-between z-30 shrink-0">
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-md bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 </div>
-                <p class="text-xs text-slate-400">Autonomous Multi-Agent AI Data Research & Analysis Platform</p>
+                <div class="flex items-center gap-2">
+                    <span class="font-semibold text-sm tracking-tight text-white">InsightFlow</span>
+                    <span class="text-[11px] font-mono text-zinc-400 bg-zinc-800 px-1.5 py-0.5 rounded border border-zinc-700/60">v1.0.0</span>
+                </div>
+            </div>
+
+            <!-- Breadcrumb Navigation -->
+            <div class="hidden md:flex items-center gap-2 text-xs text-zinc-400">
+                <span>/</span>
+                <span class="text-zinc-500">workspaces</span>
+                <span>/</span>
+                <span id="breadcrumbDataset" class="text-zinc-200 font-mono font-medium">sales_data.csv</span>
             </div>
         </div>
 
-        <div class="flex items-center gap-4">
-            <div class="hidden md:flex items-center gap-2 text-xs bg-slate-800/60 border border-slate-700/60 px-3 py-1.5 rounded-lg text-slate-300">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
-                <span>LangGraph Engine: <strong class="text-emerald-400">ONLINE</strong></span>
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:flex items-center gap-2 text-[11px] text-zinc-400 bg-zinc-900 border border-subtle px-2.5 py-1 rounded-md">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>LangGraph Runtime</span>
             </div>
-            <div class="hidden lg:flex items-center gap-2 text-xs bg-slate-800/60 border border-slate-700/60 px-3 py-1.5 rounded-lg text-slate-300">
-                <svg class="w-3.5 h-3.5 text-indigo-400 fill-current" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                <span>Accuracy: <strong class="text-indigo-300">100% Math Audited</strong></span>
+
+            <div class="hidden lg:flex items-center gap-2 text-[11px] text-zinc-400 bg-zinc-900 border border-subtle px-2.5 py-1 rounded-md">
+                <span class="text-zinc-500 font-mono">Engine:</span>
+                <span class="text-zinc-200 font-medium">Gemini 3.8 Flash</span>
             </div>
-            <a href="/api/download-pdf" target="_blank" class="flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition-all text-white shadow-md shadow-indigo-600/30">
-                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span>Download Executive PDF</span>
+
+            <a href="/api/download-pdf" target="_blank" class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 transition-colors">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Export PDF</span>
             </a>
         </div>
     </header>
 
-    <!-- ── MAIN WORKSPACE (SIDEBAR + MAIN CANVAS) ─────────────────────── -->
+    <!-- ── APPLICATION WORKSPACE ──────────────────────────────────── -->
     <div class="flex flex-1 overflow-hidden">
 
-        <!-- ── LEFT STICKY SIDEBAR ────────────────────────────────────── -->
-        <aside class="w-80 h-[calc(100vh-4rem)] sticky top-16 border-r border-slate-800/80 bg-slate-900/40 p-5 flex flex-col gap-6 overflow-y-auto shrink-0">
+        <!-- ── LEFT CONTROL PANEL (40% width) ─────────────────────── -->
+        <aside class="w-[420px] border-r border-subtle bg-surface flex flex-col shrink-0 overflow-y-auto">
             
-            <!-- Dataset Switcher -->
-            <div>
-                <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-                    <span class="flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 text-indigo-400 fill-current" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2z"/></svg>
-                        Active Dataset
-                    </span>
-                    <span id="activeBadge" class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">sales_data.csv</span>
+            <div class="p-5 border-b border-subtle space-y-4">
+                <!-- Dataset Selector Dropdown -->
+                <div>
+                    <label class="block text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Dataset Source</label>
+                    <div class="flex gap-2">
+                        <select id="datasetSelect" onchange="switchDataset(this.value)" class="flex-1 bg-zinc-900 border border-subtle rounded-md px-3 py-1.5 text-xs text-zinc-200 focus:outline-none focus:border-blue-500 font-mono">
+                            <option value="sales_data.csv">sales_data.csv (Retail, 30 rows)</option>
+                            <option value="employee_data.csv">employee_data.csv (Workforce, 20 rows)</option>
+                        </select>
+                        <label for="fileUploadInput" class="px-2.5 py-1.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-md text-xs text-zinc-300 cursor-pointer transition-colors flex items-center justify-center shrink-0" title="Upload custom CSV/XLSX">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <input type="file" id="fileUploadInput" accept=".csv, .xlsx, .xls" class="hidden" onchange="uploadCustomFile(event)">
+                        </label>
+                    </div>
                 </div>
-                
-                <div class="space-y-2">
-                    <button onclick="switchDataset('sales_data.csv')" class="w-full text-left p-3 rounded-xl border border-slate-700/60 bg-slate-800/40 hover:bg-indigo-950/40 hover:border-indigo-500/50 transition-all group">
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm font-semibold text-slate-200 group-hover:text-indigo-300">sales_data.csv</span>
-                            <span class="text-[11px] font-mono text-slate-400">30 Rows</span>
-                        </div>
-                        <p class="text-xs text-slate-500 mt-0.5">Multi-region sales, revenue, discounts</p>
+
+                <!-- Dataset Metadata Bar -->
+                <div class="grid grid-cols-4 gap-2 pt-1 text-center font-mono">
+                    <div class="bg-zinc-900/60 border border-subtle rounded p-2">
+                        <div class="text-[10px] text-zinc-500">ROWS</div>
+                        <div id="statRows" class="text-xs font-semibold text-zinc-200">30</div>
+                    </div>
+                    <div class="bg-zinc-900/60 border border-subtle rounded p-2">
+                        <div class="text-[10px] text-zinc-500">COLS</div>
+                        <div id="statCols" class="text-xs font-semibold text-zinc-200">10</div>
+                    </div>
+                    <div class="bg-zinc-900/60 border border-subtle rounded p-2">
+                        <div class="text-[10px] text-zinc-500">NULLS</div>
+                        <div id="statMissing" class="text-xs font-semibold text-emerald-400">0</div>
+                    </div>
+                    <div class="bg-zinc-900/60 border border-subtle rounded p-2">
+                        <div class="text-[10px] text-zinc-500">MEMORY</div>
+                        <div id="statMemory" class="text-xs font-semibold text-zinc-200">2.3KB</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Natural Language Analysis Console -->
+            <div class="p-5 border-b border-subtle space-y-3.5">
+                <div class="flex items-center justify-between">
+                    <label class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">Research Objective</label>
+                    <span class="text-[10px] text-zinc-500 font-mono">Natural Language</span>
+                </div>
+
+                <!-- Preset Objective Chips -->
+                <div class="flex flex-wrap gap-1.5">
+                    <button onclick="setQuery('Which product brings maximum revenue and what is the leading region?')" class="text-[11px] px-2 py-1 rounded bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-subtle transition-colors">
+                        Revenue Drivers
                     </button>
-
-                    <button onclick="switchDataset('employee_data.csv')" class="w-full text-left p-3 rounded-xl border border-slate-700/60 bg-slate-800/40 hover:bg-indigo-950/40 hover:border-indigo-500/50 transition-all group">
-                        <div class="flex items-center justify-between">
-                            <span class="text-sm font-semibold text-slate-200 group-hover:text-indigo-300">employee_data.csv</span>
-                            <span class="text-[11px] font-mono text-slate-400">20 Rows</span>
-                        </div>
-                        <p class="text-xs text-slate-500 mt-0.5">HR workforce, roles, salaries, remote</p>
+                    <button onclick="setQuery('Identify statistical anomalies and price outliers using IQR methods.')" class="text-[11px] px-2 py-1 rounded bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-subtle transition-colors">
+                        IQR Outliers
+                    </button>
+                    <button onclick="setQuery('Analyze correlations across numeric variables and summarize growth trajectory.')" class="text-[11px] px-2 py-1 rounded bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-subtle transition-colors">
+                        Correlations
                     </button>
                 </div>
 
-                <!-- Custom Upload Area -->
-                <div class="mt-3">
-                    <label for="fileUploadInput" class="border-2 border-dashed border-slate-700/80 hover:border-indigo-500/60 rounded-xl p-3.5 flex flex-col items-center justify-center cursor-pointer transition-all bg-slate-800/20 hover:bg-indigo-950/20 group">
-                        <svg class="w-5 h-5 text-slate-400 group-hover:text-indigo-400 mb-1 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-                        <span class="text-xs font-semibold text-slate-300">Drop custom CSV / Excel</span>
-                        <span class="text-[10px] text-slate-500">Max size 50MB</span>
-                        <input type="file" id="fileUploadInput" accept=".csv, .xlsx, .xls" class="hidden" onchange="uploadCustomFile(event)">
-                    </label>
+                <!-- Textarea Editor -->
+                <div class="relative">
+                    <textarea id="queryInput" rows="3" class="w-full bg-zinc-900 border border-subtle focus:border-blue-500 rounded-md p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none transition-colors leading-relaxed resize-none">Which product brings maximum revenue and what is the leading region?</textarea>
+                </div>
+
+                <!-- Run Button -->
+                <button id="runBtn" onclick="runMultiAgentPipeline()" class="w-full py-2 px-4 rounded-md bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs flex items-center justify-center gap-2 transition-colors shadow-sm">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    <span>Execute Analysis Pipeline</span>
+                </button>
+            </div>
+
+            <!-- Execution Trace & Agent Flow (GitHub Actions Style) -->
+            <div class="p-5 flex-1 flex flex-col min-h-0">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400">Execution Pipeline Trace</span>
+                    <span id="traceStatus" class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-1.5 py-0.5 rounded">Completed</span>
+                </div>
+
+                <div class="space-y-2 overflow-y-auto flex-1 pr-1" id="pipelineTraceList">
+                    <!-- Populated dynamically via JS -->
                 </div>
             </div>
 
-            <!-- Active Dataset KPIs -->
-            <div class="p-4 rounded-xl bg-slate-800/30 border border-slate-800">
-                <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2.5">Dataset Profiler</div>
-                <div class="grid grid-cols-2 gap-2.5">
-                    <div class="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                        <div class="text-[10px] text-slate-500 uppercase font-semibold">Total Rows</div>
-                        <div id="statRows" class="text-base font-extrabold text-slate-100">30</div>
-                    </div>
-                    <div class="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                        <div class="text-[10px] text-slate-500 uppercase font-semibold">Features</div>
-                        <div id="statCols" class="text-base font-extrabold text-slate-100">10</div>
-                    </div>
-                    <div class="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                        <div class="text-[10px] text-slate-500 uppercase font-semibold">Missing Cells</div>
-                        <div id="statMissing" class="text-base font-extrabold text-emerald-400">0</div>
-                    </div>
-                    <div class="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800">
-                        <div class="text-[10px] text-slate-500 uppercase font-semibold">Memory</div>
-                        <div id="statMemory" class="text-base font-extrabold text-indigo-300">2.3 KB</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Multi-Agent Roster -->
-            <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2.5 flex items-center justify-between">
-                    <span>Autonomous Roster</span>
-                    <span class="text-[10px] text-slate-500 font-mono">5 Specialized</span>
-                </div>
-                
-                <div class="space-y-1.5">
-                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-800/30 border border-slate-800 text-xs">
-                        <span class="font-semibold text-slate-200 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 🧠 Planner</span>
-                        <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">Task Graph</span>
-                    </div>
-                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-800/30 border border-slate-800 text-xs">
-                        <span class="font-semibold text-slate-200 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 📊 Data Analyst</span>
-                        <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Hygiene & Stats</span>
-                    </div>
-                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-800/30 border border-slate-800 text-xs">
-                        <span class="font-semibold text-slate-200 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 🔍 Insight Research</span>
-                        <span class="text-[10px] font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">IQR & Corrs</span>
-                    </div>
-                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-800/30 border border-slate-800 text-xs">
-                        <span class="font-semibold text-slate-200 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ⚖️ Evaluator</span>
-                        <span class="text-[10px] font-mono text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded">Math Guardrail</span>
-                    </div>
-                    <div class="flex items-center justify-between p-2 rounded-lg bg-slate-800/30 border border-slate-800 text-xs">
-                        <span class="font-semibold text-slate-200 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 📄 Report Gen</span>
-                        <span class="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded">PDF Synthesis</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Credits -->
-            <div class="mt-auto pt-4 border-t border-slate-800/80 text-[11px] text-slate-500">
-                Pimpri Chinchwad University (CSE 2029) • Portfolio Project
+            <!-- Footer Meta -->
+            <div class="p-3 border-t border-subtle text-[11px] text-zinc-500 flex items-center justify-between">
+                <span>Autonomous Agent Runtime</span>
+                <span id="execLatency" class="font-mono text-zinc-400">Latency: 2.18s</span>
             </div>
         </aside>
 
-        <!-- ── MAIN STUDIO CONTENT CANVAS ─────────────────────────────── -->
-        <main class="flex-1 p-6 md:p-8 overflow-y-auto space-y-6">
+        <!-- ── RIGHT CONTENT CANVAS (60% width) ────────────────────── -->
+        <main class="flex-1 flex flex-col bg-zinc-950 overflow-hidden">
 
-            <!-- ── HERO OBJECTIVE COMMAND CENTER ────────────────────────── -->
-            <section class="glass-panel rounded-2xl p-6 border border-slate-800 shadow-2xl relative overflow-hidden">
-                <div class="flex items-center justify-between mb-3">
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-400">Research Command Center</span>
-                        <span class="text-slate-600">•</span>
-                        <span class="text-xs text-slate-400">Autonomous Multi-Agent Orchestration</span>
-                    </div>
-                    <span class="text-xs text-slate-400 font-mono">Cyclic Self-Correction Enabled</span>
-                </div>
-
-                <!-- Preset Tags -->
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <button onclick="setQuery('Which product brings maximum revenue and what is the leading region?')" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-800/80 hover:bg-indigo-600/30 border border-slate-700/80 hover:border-indigo-500/50 text-slate-300 transition-all flex items-center gap-1.5">
-                        🏆 Top Revenue Drivers
-                    </button>
-                    <button onclick="setQuery('Identify statistical anomalies and price outliers using IQR methods.')" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-800/80 hover:bg-indigo-600/30 border border-slate-700/80 hover:border-indigo-500/50 text-slate-300 transition-all flex items-center gap-1.5">
-                        ⚠️ Outliers & Anomalies (IQR)
-                    </button>
-                    <button onclick="setQuery('Analyze correlations across numeric variables and summarize growth trajectory.')" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-800/80 hover:bg-indigo-600/30 border border-slate-700/80 hover:border-indigo-500/50 text-slate-300 transition-all flex items-center gap-1.5">
-                        📈 Feature Correlations
-                    </button>
-                </div>
-
-                <!-- Input Box & Action Button -->
-                <div class="flex flex-col md:flex-row gap-3">
-                    <input type="text" id="queryInput" class="flex-1 bg-slate-900/90 border border-slate-700/80 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none transition-all" value="Which product brings maximum revenue and what is the leading region?">
-                    
-                    <button id="runBtn" onclick="runMultiAgentPipeline()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 font-bold text-xs text-white shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all flex items-center justify-center gap-2 shrink-0">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M7.5 5.6L10 7 8.6 4.5 10 2 7.5 3.4 5 2l1.4 2.5L5 7zm12 9.8L17 14l1.4 2.5L17 19l2.5-1.4L22 19l-1.4-2.5L22 14zM22 2l-2.5 1.4L17 2l1.4 2.5L17 7l2.5-1.4L22 7l-1.4-2.5zm-7.63 5.29c-.39-.39-1.02-.39-1.41 0L1.29 18.96c-.39.39-.39 1.02 0 1.41l2.34 2.34c.39.39 1.02.39 1.41 0L16.7 11.05c.39-.39.39-1.02 0-1.41l-2.33-2.35zm-1.03 5.49l-2.12-2.12 2.44-2.44 2.12 2.12-2.44 2.44z"/></svg>
-                        <span>Run Multi-Agent Pipeline</span>
-                    </button>
-                </div>
-            </section>
-
-            <!-- ── HORIZONTAL TABS BAR (NO TEXT WRAP) ────────────────────── -->
-            <div class="flex items-center gap-3 border-b border-slate-800 pb-3 overflow-x-auto">
-                <button onclick="switchTab('tab-agent')" id="btn-tab-agent" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all border border-transparent active-tab flex items-center gap-2 whitespace-nowrap">
-                    🧠 Multi-Agent Studio & Report
+            <!-- Sub Navigation Tabs Bar -->
+            <div class="h-11 border-b border-subtle bg-surface px-6 flex items-center gap-6 shrink-0">
+                <button onclick="switchTab('report')" id="tab-report" class="tab-btn active text-xs font-medium h-full flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors">
+                    Executive Brief
                 </button>
-                <button onclick="switchTab('tab-data')" id="btn-tab-data" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all border border-slate-800 bg-slate-900 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
-                    📊 Interactive Data Studio
+                <button onclick="switchTab('data')" id="tab-data" class="tab-btn text-xs font-medium h-full flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors">
+                    Data Grid
                 </button>
-                <button onclick="switchTab('tab-charts')" id="btn-tab-charts" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all border border-slate-800 bg-slate-900 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
-                    📈 Visual Intelligence Lab
+                <button onclick="switchTab('charts')" id="tab-charts" class="tab-btn text-xs font-medium h-full flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors">
+                    Charts & Trends
                 </button>
-                <button onclick="switchTab('tab-history')" id="btn-tab-history" class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all border border-slate-800 bg-slate-900 text-slate-400 hover:text-slate-200 flex items-center gap-2 whitespace-nowrap">
-                    🗄️ Session History (SQLite)
+                <button onclick="switchTab('history')" id="tab-history" class="tab-btn text-xs font-medium h-full flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors">
+                    Audit Archive
                 </button>
             </div>
 
-            <!-- ── TAB 1: MULTI-AGENT CANVAS & REPORT ───────────────────── -->
-            <div id="tab-agent" class="space-y-6">
+            <!-- ── TAB CONTENT CONTAINERS ─────────────────────────────── -->
+            <div class="flex-1 overflow-y-auto p-8">
 
-                <!-- Loading State Banner -->
-                <div id="agentLoadingBanner" class="hidden glass-panel rounded-xl p-6 border border-indigo-500/40 text-center animate-pulse">
-                    <div class="w-8 h-8 mx-auto border-3 border-indigo-400 border-t-transparent rounded-full animate-spin mb-3"></div>
-                    <h3 class="text-base font-bold text-slate-100">LangGraph Pipeline In Flight...</h3>
-                    <p class="text-xs text-slate-400 mt-1">Planner decomposing tasks • Data Analyst verifying hygiene • Evaluator auditing math</p>
-                </div>
+                <!-- ── VIEW 1: EXECUTIVE BRIEF ────────────────────────── -->
+                <div id="view-report" class="max-w-4xl mx-auto space-y-6">
 
-                <!-- LangGraph Orchestration Flow Diagram -->
-                <div class="glass-panel rounded-2xl p-6 border border-slate-800">
-                    <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 flex items-center justify-between">
-                        <span>LangGraph Orchestration Flow</span>
-                        <span id="flowLatency" class="text-xs font-mono text-emerald-400 font-bold">Execution: 2.18s</span>
+                    <!-- Metric Scorecard Cards (Clean Monospace Layout) -->
+                    <div class="grid grid-cols-4 gap-3">
+                        <div class="bg-surface border border-subtle rounded-lg p-3.5">
+                            <div class="text-[10px] font-mono uppercase text-zinc-500">Calculation Accuracy</div>
+                            <div id="cardAccuracy" class="text-xl font-bold font-mono text-emerald-400 mt-1">100.0%</div>
+                            <div class="text-[10px] text-zinc-500 mt-0.5">Audited vs Ground Truth</div>
+                        </div>
+                        <div class="bg-surface border border-subtle rounded-lg p-3.5">
+                            <div class="text-[10px] font-mono uppercase text-zinc-500">Evidence Coverage</div>
+                            <div id="cardCoverage" class="text-xl font-bold font-mono text-blue-400 mt-1">100.0%</div>
+                            <div class="text-[10px] text-zinc-500 mt-0.5">Empirical Claims Verified</div>
+                        </div>
+                        <div class="bg-surface border border-subtle rounded-lg p-3.5">
+                            <div class="text-[10px] font-mono uppercase text-zinc-500">Self-Correction Retries</div>
+                            <div id="cardRetries" class="text-xl font-bold font-mono text-zinc-200 mt-1">0</div>
+                            <div class="text-[10px] text-zinc-500 mt-0.5">Max Threshold: 3</div>
+                        </div>
+                        <div class="bg-surface border border-subtle rounded-lg p-3.5">
+                            <div class="text-[10px] font-mono uppercase text-zinc-500">Guardrail Status</div>
+                            <div id="cardStatus" class="text-xl font-bold font-mono text-emerald-400 mt-1">APPROVED</div>
+                            <div class="text-[10px] text-zinc-500 mt-0.5">Zero Hallucination</div>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-                        <div class="p-4 rounded-xl bg-slate-900/80 border border-indigo-500/50 shadow-lg shadow-indigo-500/10">
-                            <div class="text-[10px] font-mono text-indigo-400 font-bold">NODE 1</div>
-                            <div class="font-bold text-sm text-slate-100 mt-0.5">🧠 Planner</div>
-                            <div class="text-[11px] text-slate-400 mt-1" id="nodePlannerInfo">5 Subtasks Planned</div>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/80 border border-emerald-500/50 shadow-lg shadow-emerald-500/10">
-                            <div class="text-[10px] font-mono text-emerald-400 font-bold">NODE 2</div>
-                            <div class="font-bold text-sm text-slate-100 mt-0.5">📊 Data Analyst</div>
-                            <div class="text-[11px] text-slate-400 mt-1" id="nodeAnalystInfo">Hygiene & Stats Verified</div>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/80 border border-purple-500/50 shadow-lg shadow-purple-500/10">
-                            <div class="text-[10px] font-mono text-purple-400 font-bold">NODE 3</div>
-                            <div class="font-bold text-sm text-slate-100 mt-0.5">🔍 Insight Research</div>
-                            <div class="text-[11px] text-slate-400 mt-1" id="nodeInsightInfo">Correlations & IQR Found</div>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/80 border border-rose-500/50 shadow-lg shadow-rose-500/10">
-                            <div class="text-[10px] font-mono text-rose-400 font-bold">NODE 4</div>
-                            <div class="font-bold text-sm text-slate-100 mt-0.5">⚖️ Evaluator</div>
-                            <div class="text-[11px] text-emerald-400 font-bold mt-1" id="nodeEvalInfo">100% Math Match ✅</div>
-                        </div>
-                        <div class="p-4 rounded-xl bg-slate-900/80 border border-amber-500/50 shadow-lg shadow-amber-500/10">
-                            <div class="text-[10px] font-mono text-amber-400 font-bold">NODE 5</div>
-                            <div class="font-bold text-sm text-slate-100 mt-0.5">📄 Report Gen</div>
-                            <div class="text-[11px] text-slate-400 mt-1">PDF & Markdown Ready</div>
+                    <!-- Clean Markdown Document Container -->
+                    <div class="bg-surface border border-subtle rounded-lg p-8 shadow-sm">
+                        <div id="reportMarkdownContainer" class="doc-view">
+                            <!-- Clean formatted markdown rendered here -->
                         </div>
                     </div>
                 </div>
 
-                <!-- 4 KPI Reliability Scorecard Tiles -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-                        <div class="text-[11px] font-bold uppercase text-slate-400 tracking-wider">Calculation Accuracy</div>
-                        <div id="cardAccuracy" class="text-3xl font-extrabold text-emerald-400 mt-1">100.0%</div>
-                        <div class="text-[11px] text-emerald-500/90 font-semibold mt-1">✓ Ground-Truth Audited</div>
-                    </div>
-                    <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-                        <div class="text-[11px] font-bold uppercase text-slate-400 tracking-wider">Evidence Coverage</div>
-                        <div id="cardCoverage" class="text-3xl font-extrabold text-indigo-400 mt-1">100.0%</div>
-                        <div class="text-[11px] text-indigo-400 font-semibold mt-1">✓ Complete Empirical Proof</div>
-                    </div>
-                    <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-                        <div class="text-[11px] font-bold uppercase text-slate-400 tracking-wider">Self-Correction Retries</div>
-                        <div id="cardRetries" class="text-3xl font-extrabold text-slate-100 mt-1">0</div>
-                        <div class="text-[11px] text-slate-400 font-semibold mt-1">✓ Zero Calculation Errors</div>
-                    </div>
-                    <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800">
-                        <div class="text-[11px] font-bold uppercase text-slate-400 tracking-wider">Verification Status</div>
-                        <div id="cardStatus" class="text-3xl font-extrabold text-emerald-400 mt-1">APPROVED</div>
-                        <div class="text-[11px] text-emerald-400 font-semibold mt-1">✓ Hallucination Guardrail</div>
-                    </div>
-                </div>
-
-                <!-- Planner Decomposition Schedule -->
-                <div class="glass-panel rounded-2xl p-6 border border-slate-800">
-                    <div class="text-sm font-bold text-slate-200 mb-3 flex items-center justify-between">
-                        <span>Planner Agent Decomposition & Task Schedule</span>
-                        <span class="text-xs text-slate-500 font-mono">Autonomous Execution Sequence</span>
-                    </div>
-                    <div id="subtasksContainer" class="space-y-2.5">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <!-- Executive Intelligence Brief Container -->
-                <div class="glass-panel rounded-2xl p-8 border border-slate-800 shadow-2xl">
-                    <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                <!-- ── VIEW 2: DATA GRID ──────────────────────────────── -->
+                <div id="view-data" class="hidden space-y-4">
+                    <div class="flex items-center justify-between">
                         <div>
-                            <h2 class="text-xl font-bold text-slate-100">Executive Intelligence Report</h2>
-                            <p class="text-xs text-slate-400 mt-0.5">Synthesized by Report Generator Agent • Mathematical Claims Audited by Evaluation Guardrail</p>
+                            <h3 class="text-sm font-semibold text-zinc-200">Active Records View</h3>
+                            <p class="text-xs text-zinc-500">Inspecting in-memory Pandas dataframe</p>
                         </div>
-                        <a href="/api/download-pdf" target="_blank" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-indigo-600/30 transition-all shrink-0">
-                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                            <span>Download Official PDF</span>
-                        </a>
-                    </div>
-                    <div id="reportMarkdownContainer" class="prose prose-invert max-w-none text-slate-300 text-sm leading-relaxed">
-                        <!-- Markdown injected here -->
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- ── TAB 2: INTERACTIVE DATA STUDIO ──────────────────────── -->
-            <div id="tab-data" class="hidden space-y-6">
-                <div class="glass-panel rounded-2xl p-6 border border-slate-800">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                        <div>
-                            <h3 class="text-base font-bold text-slate-100">Dataset Inspector</h3>
-                            <p class="text-xs text-slate-400">Search and browse active records with zero latency</p>
-                        </div>
-                        <div class="w-72">
-                            <input type="text" id="tableFilterInput" onkeyup="filterTableRows()" placeholder="Search in records..." class="w-full bg-slate-900 border border-slate-700/80 rounded-lg px-3.5 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500">
-                        </div>
+                        <input type="text" id="tableFilterInput" onkeyup="filterTableRows()" placeholder="Filter records..." class="bg-zinc-900 border border-subtle rounded px-3 py-1 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-blue-500 w-64">
                     </div>
 
-                    <div class="overflow-x-auto rounded-xl border border-slate-800">
-                        <table id="dataTable" class="w-full text-left text-xs text-slate-300">
-                            <thead class="bg-slate-900/90 text-slate-400 uppercase tracking-wider text-[10px] font-bold border-b border-slate-800">
+                    <div class="border border-subtle rounded-lg overflow-x-auto bg-surface">
+                        <table class="w-full text-left text-xs font-mono">
+                            <thead class="bg-zinc-900 text-zinc-400 uppercase text-[10px] border-b border-subtle">
                                 <tr id="tableHeaderRow"></tr>
                             </thead>
-                            <tbody id="tableBody" class="divide-y divide-slate-800/60 font-mono"></tbody>
+                            <tbody id="tableBody" class="divide-y divide-zinc-800/80"></tbody>
                         </table>
                     </div>
                 </div>
-            </div>
 
-            <!-- ── TAB 3: VISUAL INTELLIGENCE LAB ──────────────────────── -->
-            <div id="tab-charts" class="hidden space-y-6">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div class="glass-panel rounded-2xl p-6 border border-slate-800">
-                        <h4 class="text-sm font-bold text-slate-200 mb-1">Regional Revenue Contribution</h4>
-                        <p class="text-xs text-slate-500 mb-4">Total revenue breakdown across geographic zones</p>
-                        <canvas id="barChart" height="220"></canvas>
-                    </div>
-                    <div class="glass-panel rounded-2xl p-6 border border-slate-800">
-                        <h4 class="text-sm font-bold text-slate-200 mb-1">Product Category Share</h4>
-                        <p class="text-xs text-slate-500 mb-4">Proportional sales volume across categories</p>
-                        <canvas id="donutChart" height="220"></canvas>
+                <!-- ── VIEW 3: CHARTS & TRENDS ────────────────────────── -->
+                <div id="view-charts" class="hidden space-y-6 max-w-5xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="bg-surface border border-subtle rounded-lg p-5">
+                            <div class="text-xs font-semibold text-zinc-200 mb-0.5">Regional Revenue Distribution</div>
+                            <div class="text-[11px] text-zinc-500 mb-4 font-mono">Sum aggregated by zone</div>
+                            <canvas id="barChart" height="220"></canvas>
+                        </div>
+                        <div class="bg-surface border border-subtle rounded-lg p-5">
+                            <div class="text-xs font-semibold text-zinc-200 mb-0.5">Product Category Volume</div>
+                            <div class="text-[11px] text-zinc-500 mb-4 font-mono">Proportional share breakdown</div>
+                            <canvas id="donutChart" height="220"></canvas>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- ── TAB 4: SESSION HISTORY & MEMORY VAULT ───────────────── -->
-            <div id="tab-history" class="hidden space-y-6">
-                <div class="glass-panel rounded-2xl p-6 border border-slate-800">
-                    <div class="flex items-center justify-between mb-4">
+                <!-- ── VIEW 4: AUDIT ARCHIVE ──────────────────────────── -->
+                <div id="view-history" class="hidden space-y-4 max-w-5xl mx-auto">
+                    <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-base font-bold text-slate-100">Persistent SQLite Memory Archive</h3>
-                            <p class="text-xs text-slate-400">Historical audit trail of all previous multi-agent runs</p>
+                            <h3 class="text-sm font-semibold text-zinc-200">SQLite Session History</h3>
+                            <p class="text-xs text-zinc-500">Auditable log of prior autonomous pipeline runs</p>
                         </div>
-                        <button onclick="fetchHistory()" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300">
-                            Refresh History
+                        <button onclick="fetchHistory()" class="px-2.5 py-1 text-xs bg-zinc-900 hover:bg-zinc-800 border border-subtle rounded text-zinc-300">
+                            Refresh
                         </button>
                     </div>
 
-                    <div class="overflow-x-auto rounded-xl border border-slate-800">
-                        <table class="w-full text-left text-xs text-slate-300">
-                            <thead class="bg-slate-900/90 text-slate-400 uppercase tracking-wider text-[10px] font-bold border-b border-slate-800">
+                    <div class="border border-subtle rounded-lg overflow-x-auto bg-surface">
+                        <table class="w-full text-left text-xs font-mono">
+                            <thead class="bg-zinc-900 text-zinc-400 uppercase text-[10px] border-b border-subtle">
                                 <tr>
                                     <th class="p-3">Session ID</th>
                                     <th class="p-3">Timestamp</th>
                                     <th class="p-3">Dataset</th>
-                                    <th class="p-3">User Query</th>
+                                    <th class="p-3">Objective Query</th>
                                     <th class="p-3">Accuracy</th>
                                     <th class="p-3">Status</th>
                                 </tr>
                             </thead>
-                            <tbody id="historyTableBody" class="divide-y divide-slate-800/60 font-mono">
-                                <!-- Injected by JS -->
-                            </tbody>
+                            <tbody id="historyTableBody" class="divide-y divide-zinc-800/80"></tbody>
                         </table>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </main>
     </div>
 
-    <!-- ── SCRIPT LOGIC ─────────────────────────────────────────────── -->
+    <!-- ── APPLICATION LOGIC SCRIPT ───────────────────────────────── -->
     <script>
-        let currentDatasetName = "sales_data.csv";
+        let currentDataset = "sales_data.csv";
         let barChartInstance = null;
         let donutChartInstance = null;
 
@@ -459,20 +343,17 @@
             document.getElementById("queryInput").value = q;
         }
 
-        function switchTab(tabId) {
-            const tabs = ['tab-agent', 'tab-data', 'tab-charts', 'tab-history'];
-            tabs.forEach(t => {
-                document.getElementById(t).classList.add('hidden');
-                document.getElementById('btn-' + t).classList.remove('active-tab');
-                document.getElementById('btn-' + t).classList.add('bg-slate-900', 'text-slate-400');
+        function switchTab(tabKey) {
+            ['report', 'data', 'charts', 'history'].forEach(key => {
+                document.getElementById('view-' + key).classList.add('hidden');
+                document.getElementById('tab-' + key).classList.remove('active');
             });
 
-            document.getElementById(tabId).classList.remove('hidden');
-            document.getElementById('btn-' + tabId).classList.add('active-tab');
-            document.getElementById('btn-' + tabId).classList.remove('bg-slate-900', 'text-slate-400');
+            document.getElementById('view-' + tabKey).classList.remove('hidden');
+            document.getElementById('tab-' + tabKey).classList.add('active');
 
-            if (tabId === 'tab-charts') renderCharts();
-            if (tabId === 'tab-history') fetchHistory();
+            if (tabKey === 'charts') renderCharts();
+            if (tabKey === 'history') fetchHistory();
         }
 
         async function switchDataset(name) {
@@ -481,8 +362,9 @@
             const res = await fetch("/api/switch-dataset", { method: "POST", body: fd });
             const data = await res.json();
             if (data.success) {
-                currentDatasetName = name;
-                document.getElementById("activeBadge").innerText = name;
+                currentDataset = name;
+                document.getElementById("breadcrumbDataset").innerText = name;
+                document.getElementById("datasetSelect").value = name;
                 fetchPreview();
                 runMultiAgentPipeline();
             }
@@ -496,30 +378,45 @@
             const res = await fetch("/api/upload", { method: "POST", body: fd });
             const data = await res.json();
             if (data.success) {
-                currentDatasetName = data.file_name;
-                document.getElementById("activeBadge").innerText = data.file_name;
+                currentDataset = data.file_name;
+                document.getElementById("breadcrumbDataset").innerText = data.file_name;
+                
+                // Add to select options if not present
+                const sel = document.getElementById("datasetSelect");
+                const opt = document.createElement("option");
+                opt.value = data.file_name;
+                opt.innerText = data.file_name + " (Custom)";
+                sel.appendChild(opt);
+                sel.value = data.file_name;
+
                 fetchPreview();
                 runMultiAgentPipeline();
             }
         }
 
         async function fetchPreview() {
-            const res = await fetch("/api/data-preview");
-            const data = await res.json();
-            if (!data.success) return;
+            try {
+                const res = await fetch("/api/data-preview");
+                const data = await res.json();
+                if (!data.success) return;
 
-            document.getElementById("statRows").innerText = data.rows.toLocaleString();
-            document.getElementById("statCols").innerText = data.columns.length;
-            document.getElementById("statMissing").innerText = data.missing_count;
-            document.getElementById("statMemory").innerText = data.memory_kb + " KB";
+                document.getElementById("statRows").innerText = data.rows.toLocaleString();
+                document.getElementById("statCols").innerText = data.columns.length;
+                document.getElementById("statMissing").innerText = data.missing_count;
+                document.getElementById("statMemory").innerText = data.memory_kb + "KB";
 
-            const th = document.getElementById("tableHeaderRow");
-            th.innerHTML = data.columns.map(c => `<th class="p-3">${c}</th>`).join("");
+                // Table headers
+                const th = document.getElementById("tableHeaderRow");
+                th.innerHTML = data.columns.map(c => `<th class="p-2.5 font-medium">${c}</th>`).join("");
 
-            const tb = document.getElementById("tableBody");
-            tb.innerHTML = data.records.map(r => {
-                return `<tr>${data.columns.map(c => `<td class="p-3 text-slate-300">${r[c]}</td>`).join("")}</tr>`;
-            }).join("");
+                // Table body
+                const tb = document.getElementById("tableBody");
+                tb.innerHTML = data.records.map(r => {
+                    return `<tr>${data.columns.map(c => `<td class="p-2.5 text-zinc-300">${r[c]}</td>`).join("")}</tr>`;
+                }).join("");
+            } catch (err) {
+                console.error("Preview fetch error:", err);
+            }
         }
 
         function filterTableRows() {
@@ -535,50 +432,55 @@
             if (!query) return;
 
             const btn = document.getElementById("runBtn");
-            const banner = document.getElementById("agentLoadingBanner");
+            const traceStatus = document.getElementById("traceStatus");
             btn.disabled = true;
-            banner.classList.remove("hidden");
+            btn.classList.add("opacity-50");
+            traceStatus.innerText = "Running...";
+            traceStatus.className = "text-[10px] font-mono text-amber-400 bg-amber-950/60 border border-amber-800/80 px-1.5 py-0.5 rounded";
 
             try {
                 const res = await fetch("/api/run-agent", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ query: query, file_name: currentDatasetName })
+                    body: JSON.stringify({ query: query, file_name: currentDataset })
                 });
                 const data = await res.json();
 
                 if (data.success) {
-                    document.getElementById("flowLatency").innerText = "Execution: " + data.duration + "s";
-                    document.getElementById("nodePlannerInfo").innerText = data.subtasks.length + " Subtasks Planned";
-                    
+                    document.getElementById("execLatency").innerText = "Latency: " + data.duration + "s";
+                    traceStatus.innerText = "Completed";
+                    traceStatus.className = "text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-1.5 py-0.5 rounded";
+
+                    // Update scorecard numbers
                     const ev = data.evaluation || {};
                     document.getElementById("cardAccuracy").innerText = (ev.calculation_accuracy_pct || 100) + "%";
                     document.getElementById("cardCoverage").innerText = (ev.evidence_coverage_pct || 100) + "%";
                     document.getElementById("cardRetries").innerText = data.retry_count || 0;
                     document.getElementById("cardStatus").innerText = "APPROVED";
 
-                    const stContainer = document.getElementById("subtasksContainer");
-                    stContainer.innerHTML = data.subtasks.map(s => `
-                        <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start justify-between">
-                            <div>
-                                <div class="font-bold text-xs text-slate-200">${s.task_id}: ${s.action}</div>
-                                <div class="text-[11px] text-slate-400 mt-0.5">${s.description}</div>
-                                <div class="text-[10px] text-slate-500 font-mono mt-1">Tool: <code>${s.tool_name}</code></div>
+                    // Populate trace list (GitHub Actions pipeline style)
+                    const traceList = document.getElementById("pipelineTraceList");
+                    traceList.innerHTML = data.subtasks.map((s, idx) => `
+                        <div class="p-2.5 rounded bg-zinc-900 border border-subtle">
+                            <div class="flex items-center justify-between text-xs font-medium">
+                                <span class="text-zinc-200">${s.task_id} • ${s.action}</span>
+                                <span class="text-[10px] font-mono text-blue-400 bg-blue-950/60 px-1.5 py-0.5 rounded border border-blue-900">${s.assigned_agent}</span>
                             </div>
-                            <span class="text-[10px] font-bold px-2.5 py-1 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                                ${s.assigned_agent}
-                            </span>
+                            <div class="text-[11px] text-zinc-400 mt-1 leading-normal">${s.description}</div>
+                            <div class="text-[10px] font-mono text-zinc-500 mt-1">tool: ${s.tool_name}</div>
                         </div>
                     `).join("");
 
+                    // Render formatted Markdown document
                     document.getElementById("reportMarkdownContainer").innerHTML = marked.parse(data.report_markdown);
-                    confetti({ particleCount: 35, spread: 60, origin: { y: 0.85 } });
                 }
             } catch (err) {
                 console.error("Pipeline run error:", err);
+                traceStatus.innerText = "Failed";
+                traceStatus.className = "text-[10px] font-mono text-rose-400 bg-rose-950/60 border border-rose-800/80 px-1.5 py-0.5 rounded";
             } finally {
                 btn.disabled = false;
-                banner.classList.add("hidden");
+                btn.classList.remove("opacity-50");
             }
         }
 
@@ -586,6 +488,7 @@
             if (barChartInstance) barChartInstance.destroy();
             if (donutChartInstance) donutChartInstance.destroy();
 
+            // Minimalist Bar Chart
             const ctxBar = document.getElementById("barChart").getContext("2d");
             barChartInstance = new Chart(ctxBar, {
                 type: 'bar',
@@ -594,20 +497,21 @@
                     datasets: [{
                         label: 'Revenue (₹)',
                         data: [1812000, 2312500, 1467500, 2817500],
-                        backgroundColor: '#6366F1',
-                        borderRadius: 8
+                        backgroundColor: '#2563EB',
+                        borderRadius: 4
                     }]
                 },
                 options: {
                     responsive: true,
                     plugins: { legend: { display: false } },
                     scales: {
-                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } },
-                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94A3B8' } }
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#71717A', font: { family: 'JetBrains Mono', size: 10 } } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#71717A', font: { family: 'JetBrains Mono', size: 10 } } }
                     }
                 }
             });
 
+            // Minimalist Donut Chart
             const ctxDonut = document.getElementById("donutChart").getContext("2d");
             donutChartInstance = new Chart(ctxDonut, {
                 type: 'doughnut',
@@ -615,13 +519,13 @@
                     labels: ['Electronics', 'Furniture'],
                     datasets: [{
                         data: [65, 35],
-                        backgroundColor: ['#6366F1', '#A855F7'],
+                        backgroundColor: ['#2563EB', '#71717A'],
                         borderWidth: 0
                     }]
                 },
                 options: {
                     responsive: true,
-                    plugins: { legend: { position: 'bottom', labels: { color: '#94A3B8' } } }
+                    plugins: { legend: { position: 'bottom', labels: { color: '#A1A1AA', font: { size: 11 } } } }
                 }
             });
         }
@@ -635,12 +539,12 @@
                 const tbody = document.getElementById("historyTableBody");
                 tbody.innerHTML = data.sessions.map(s => `
                     <tr>
-                        <td class="p-3 text-indigo-400 font-bold">${s.session_id}</td>
-                        <td class="p-3 text-slate-400">${s.created_at || 'Just now'}</td>
-                        <td class="p-3 text-slate-200">${s.dataset_name}</td>
-                        <td class="p-3 text-slate-300 max-w-xs truncate">${s.user_query}</td>
-                        <td class="p-3 text-emerald-400 font-bold">${s.calculation_accuracy || 100}%</td>
-                        <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">COMPLETED</span></td>
+                        <td class="p-2.5 text-blue-400">${s.session_id}</td>
+                        <td class="p-2.5 text-zinc-500">${s.created_at || 'Just now'}</td>
+                        <td class="p-2.5 text-zinc-300">${s.dataset_name}</td>
+                        <td class="p-2.5 text-zinc-400 max-w-xs truncate">${s.user_query}</td>
+                        <td class="p-2.5 text-emerald-400">${s.calculation_accuracy || 100}%</td>
+                        <td class="p-2.5"><span class="px-1.5 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-400 border border-emerald-800">SUCCESS</span></td>
                     </tr>
                 `).join("");
             } catch (e) {
